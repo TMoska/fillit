@@ -6,7 +6,7 @@
 /*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 11:07:25 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/23 21:28:09 by tmoska           ###   ########.fr       */
+/*   Updated: 2016/11/23 21:46:38 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	init_tetriminos(char *buffer, int chars)
 	tetriminos = (char**)malloc(sizeof(tetriminos) * nb_tetriminos + 1);
 	tetriminos[nb_tetriminos] = NULL;
 	while (i < nb_tetriminos)
-	{
+	{`
 		tetriminos[i] = (char*)malloc(sizeof(char) + 1);
 		ft_memcpy(tetriminos[i], buffer, TETRIMINO_SIZE);
 		printf("%s \n", tetriminos[0]);
