@@ -40,16 +40,6 @@ static void	init_tetriminos(char *buffer, int chars)
 	}
 }
 
-static void	parse_map(int fd)
-{
-	char	buffer[BUFF_SIZE + 1];
-	int		chars;
-
-	buffer[BUFF_SIZE] = '\0';
-	chars = count_chars(fd, buffer);
-	init_tetriminos(buffer, chars);
-}
-
 int			main(int argc, char **argv)
 {
 	int	fd;
