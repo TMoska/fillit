@@ -22,7 +22,8 @@ INC_DIR		= includes
 INC_FLAGS	= -I./includes -I $(LIB_PATH)/includes
 
 SRC_DIR 	= src
-SRC_FILES 	= fillit.c
+SRC_FILES 	= 	main.c \
+				utils.c
 SOURCES 	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR		= obj
@@ -47,6 +48,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/*.h
 clean:
 	@rm -f $(OBJS)
 	@rm -rf $(OBJ_DIR)
+	@make clean -C $(LIB_PATH)
 
 fclean: clean
 	@rm -f $(NAME)

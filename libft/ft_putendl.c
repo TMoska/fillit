@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 11:07:25 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/23 11:18:37 by tmoska           ###   ########.fr       */
+/*   Created: 2016/11/18 10:20:55 by tmoska            #+#    #+#             */
+/*   Updated: 2016/11/18 10:22:10 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-static void	print_usage(void)
+void	ft_putendl(char const *c)
 {
-	ft_putstr("Usage: ./fillit target_file\n");
-	exit(0);
-}
-
-int			main(int argc, char **argv)
-{
-	(void)argv;
-	if (argc != 2)
-		print_usage();
-	printf("OK\n");
-	return (0);
+	ft_putendl_fd(c, 1);
 }
