@@ -38,7 +38,7 @@ $(NAME): $(OBJECTS)
 
 clean:
 	@rm -f $(OBJECTS)
-	@find . -name "*~" -name "*.swp" -delete
+	@find . \( -name "*~" -o -name "*.swp" -o -name ".DS_Store" \) -delete
 
 fclean: clean
 	@rm -f $(NAME)

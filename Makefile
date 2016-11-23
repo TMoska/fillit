@@ -48,6 +48,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/*.h
 clean:
 	@rm -f $(OBJS)
 	@rm -rf $(OBJ_DIR)
+	@find . \( -name "*~" -o -name "*.swp" -o -name ".DS_Store" \) -delete
 	@make clean -C $(LIB_PATH)
 
 fclean: clean
