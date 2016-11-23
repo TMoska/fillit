@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-GCC 		= cc
+GCC 		= gcc
 NAME 		= fillit
 FLAGS 		= -Wall -Werror -Wextra
 
@@ -41,7 +41,7 @@ $(LIB):
 	@make -C $(LIB_PATH)
 
 obj:
-	@mkdir -p obj
+	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/*.h
 	@$(CC) $(FLAGS) $(INC_FLAGS) -c -o $@ $<
@@ -54,6 +54,6 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -C $(LIB_PATH) fclean
+	@make fclean -C $(LIB_PATH)
 	
 re: fclean all

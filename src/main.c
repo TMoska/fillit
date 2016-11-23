@@ -28,17 +28,15 @@ static void	init_tetriminos(char *buffer, int chars)
 	int			nb_tetriminos;
 	int			i;
 	
-	(void)buffer;
-	i = 0;
+	i = -1;
 	nb_tetriminos = (chars + 1) / (TETRIMINO_SIZE + 1);
 	tetriminos = (char**)malloc(sizeof(tetriminos) * nb_tetriminos + 1);
 	tetriminos[nb_tetriminos] = NULL;
-	while (i < nb_tetriminos)
+	while (++i < nb_tetriminos)
 	{
-		tetriminos[i] = (char*)malloc(sizeof(char) + 1);
-		ft_memcpy(tetriminos[i], buffer, TETRIMINO_SIZE);
-		printf("%s \n", tetriminos[0]);
-		i++;
+		tetriminos[i] = (char*)malloc((sizeof(char) * TETRIMINO_SIZE + 1));
+		ft_bzero(tetriminos[i], TETRIMINO_SIZE);
+		ft_memcpy(tetriminos[i], buffer, TETRIMINO_SIZE - 1);
 	}
 }
 

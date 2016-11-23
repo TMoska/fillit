@@ -24,19 +24,6 @@ typedef struct		s_pattern
 	int				min_map_size;
 }					t_pattern;
 
-typedef struct		s_tetrimino
-{
-	int				type;
-	int				min_map_size;
-	char			*pattern;
-}					t_tetrimino;
-
-typedef struct		s_map
-{
-	void			*content;
-}					t_map;
-
-
 void	print_usage(void);
 void	exit_error(void);
 
