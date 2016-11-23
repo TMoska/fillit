@@ -6,7 +6,7 @@
 /*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 11:07:25 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/23 21:46:38 by tmoska           ###   ########.fr       */
+/*   Updated: 2016/11/24 00:48:58 by mpaju            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ static void	init_tetriminos(char *buffer, int chars)
 		ft_bzero(tetriminos[i], TETRIMINO_SIZE);
 		ft_memcpy(tetriminos[i], buffer, TETRIMINO_SIZE - 1);
 	}
+}
+
+static void	parse_map(int fd)
+{
+	char	buffer[BUFF_SIZE + 1];
+	int		chars;
+
+	buffer[BUFF_SIZE] = '\0';
+	chars = count_chars(fd, buffer);
+	init_tetriminos(buffer, chars);
 }
 
 int			main(int argc, char **argv)
