@@ -14,7 +14,7 @@
 
 # define TETRIMINO_W	(4 + 1)
 # define TETRIMINO_H	4
-# define MAX_TETRIMINOS	7
+# define MAX_TETRIMINOS	25
 # define TETRIMINO_SIZE	TETRIMINO_W * TETRIMINO_H
 # define BUFF_SIZE		MAX_TETRIMINOS * (TETRIMINO_SIZE + 1)
 
@@ -35,5 +35,9 @@ typedef struct		s_map
 {
 	void			*content;
 }					t_map;
+
+
+void	print_usage(void);
+void	exit_error(void);
 
 # endif

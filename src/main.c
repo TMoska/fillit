@@ -6,23 +6,11 @@
 /*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 11:07:25 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/23 18:52:38 by tmoska           ###   ########.fr       */
+/*   Updated: 2016/11/23 21:28:09 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-static void	print_usage(void)
-{
-	ft_putstr("Usage: ./fillit target_file\n");
-	exit(0);
-}
-
-static void	exit_error(void)
-{
-	ft_putstr("error\n");
-	exit(0);
-}
 
 static int	count_chars(int fd, char *buffer)
 {
@@ -34,13 +22,34 @@ static int	count_chars(int fd, char *buffer)
 	return (chars);
 }
 
+static void	init_tetriminos(char *buffer, int chars)
+{
+	char		**tetriminos;
+	int			nb_tetriminos;
+	int			i;
+	
+	(void)buffer;
+	i = 0;
+	nb_tetriminos = (chars + 1) / (TETRIMINO_SIZE + 1);
+	tetriminos = (char**)malloc(sizeof(tetriminos) * nb_tetriminos + 1);
+	tetriminos[nb_tetriminos] = NULL;
+	while (i < nb_tetriminos)
+	{
+		tetriminos[i] = (char*)malloc(sizeof(char) + 1);
+		ft_memcpy(tetriminos[i], buffer, TETRIMINO_SIZE);
+		printf("%s \n", tetriminos[0]);
+		i++;
+	}
+}
+
 static void	parse_map(int fd)
 {
 	char	buffer[BUFF_SIZE + 1];
 	int		chars;
 
 	buffer[BUFF_SIZE] = '\0';
-	chars = count_chars(fd, buffer);	
+	chars = count_chars(fd, buffer);
+	init_tetriminos(buffer, chars);
 }
 
 int			main(int argc, char **argv)

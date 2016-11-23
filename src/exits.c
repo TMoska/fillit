@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   exits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/17 21:32:00 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/23 21:27:53 by tmoska           ###   ########.fr       */
+/*   Created: 2016/11/23 19:33:08 by tmoska            #+#    #+#             */
+/*   Updated: 2016/11/23 21:27:32 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	print_usage(void)
 {
-	size_t	i;
-	char	*tmp_dst;
-	char	*tmp_src;
+	ft_putstr("Usage: ./fillit target_file\n");
+	exit(0);
+}
 
-	tmp_dst = dst;
-	tmp_src = (char *)src;
-	i = 0;
-	while (i++ < n)
-		*tmp_dst++ = *tmp_src++;
-	return (dst);
+void	exit_error(void)
+{
+	ft_putstr("error\n");
+	exit(0);
 }
