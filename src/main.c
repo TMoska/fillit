@@ -11,7 +11,13 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-
+/*
+static void	print_map(char **map)
+{
+	while (*map)
+		ft_putstr(*map++);
+}
+*/
 static int	count_chars(int fd, char *buffer)
 {
 	int	chars;
@@ -22,7 +28,7 @@ static int	count_chars(int fd, char *buffer)
 	return (chars);
 }
 
-static void	init_tetriminos(char *buffer, int chars)
+static char	**init_tetriminos(char *buffer, int chars)
 {
 	char		**tetriminos;
 	int			nb_tetriminos;
@@ -37,17 +43,27 @@ static void	init_tetriminos(char *buffer, int chars)
 		tetriminos[i] = (char*)malloc((sizeof(char) * TETRIMINO_SIZE + 1));
 		ft_bzero(tetriminos[i], TETRIMINO_SIZE);
 		ft_memcpy(tetriminos[i], buffer, TETRIMINO_SIZE - 1);
+	}  // memcpy buffer address wrong
+	while (*tetriminos)
+	{
+		printf("%s\n", *tetriminos++);
 	}
+
+	return (tetriminos);
 }
 
 static void	parse_map(int fd)
 {
 	char	buffer[BUFF_SIZE + 1];
+	char	**map;
 	int		chars;
 
-	buffer[BUFF_SIZE] = '\0';
+	//use bzero
+	//buffer[BUFF_SIZE] = '\0';
+	ft_bzero(buffer, BUFF_SIZE);
 	chars = count_chars(fd, buffer);
-	init_tetriminos(buffer, chars);
+	map = init_tetriminos(buffer, chars);
+	tetrimino_blocks(map);
 }
 
 int			main(int argc, char **argv)
@@ -59,6 +75,6 @@ int			main(int argc, char **argv)
 	if((fd = open(argv[1], O_RDONLY)) == -1)
 		exit_error();
 	parse_map(fd);
-	ft_putstr("OK\n");
+	ft_putstr("\n----------OK---------\n");
 	return (0);
 }

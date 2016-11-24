@@ -14,9 +14,10 @@
 
 # define TETRIMINO_W	(4 + 1)
 # define TETRIMINO_H	4
-# define MAX_TETRIMINOS	25
+# define MAX_TETRIMINOS	26
 # define TETRIMINO_SIZE	TETRIMINO_W * TETRIMINO_H
-# define BUFF_SIZE		MAX_TETRIMINOS * (TETRIMINO_SIZE + 1)
+# define BUFF_SIZE		MAX_TETRIMINOS * (TETRIMINO_SIZE + 1) - 1
+// - 1, because there is no newline after last block
 
 typedef struct		s_pattern
 {
@@ -26,5 +27,7 @@ typedef struct		s_pattern
 
 void	print_usage(void);
 void	exit_error(void);
+
+void	tetrimino_blocks(char **map);
 
 # endif
