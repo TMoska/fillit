@@ -81,6 +81,6 @@ char	*convert_map(char **map)
 		// printf("%s\n", &g_map[pos * TETRIMINO_H]);
 		pos++;
 	}
-	printf("%s\n", g_map);
+	// printf("%s\n", g_map);
 	return (g_map);
 }
