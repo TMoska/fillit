@@ -19,43 +19,36 @@
 # define BUFF_SIZE		MAX_TETRIMINOS * (TETRIMINO_SIZE + 1) - 1
 // - 1, because there is no newline after last block
 
-typedef struct		s_pattern
+typedef struct  s_point
 {
-	char			*pattern;
-	int				min_map_size;
-}					t_pattern;
+  int           x;
+  int           y;
+}               t_point;
 
+typedef struct  s_tetriminos
+{
+    t_point     points[4];
+}               t_tetriminos;
+
+
+typedef struct	s_pattern
+{
+	char		*pattern;
+    int			min_map_size;
+    int         width;
+    int         height;
+    t_tetriminos    coordinates;
+}				t_pattern;
+
+extern const t_pattern g_patterns[19];
 void	print_usage(void);
 void	exit_error(void);
-
 int		check_line(char *line);
 int		check_row(char	**map);
 void	move_line_up(char **map);
 void	move_row_left(char **map);
 char	*convert_map(char **map);
 void	tetrimino_blocks(char **map, int nb_tetriminos);
-
-const t_pattern		g_patterns[19] = {
-	{ "###...#.........", 3},
-	{ ".#...#..##......", 3},
-	{ "#...###.........", 3},
-	{ "##..#...#.......", 3},
-	{ "###.#...........", 3},
-	{ "##...#...#......", 3},
-	{ "..#.###.........", 3},
-	{ "#...#...##......", 3},
-	{ "###..#..........", 3},
-	{ ".#..##...#......", 3},
-	{ ".#..###.........", 3},
-	{ "#...##..#.......", 3},
-	{ ".##.##..........", 3},
-	{ "#...##...#......", 3},
-	{ "##...##.........", 3},
-	{ ".#..##..#.......", 3},
-	{ "####............", 4},
-	{ "#...#...#...#...", 4},
-	{ "##..##..........", 2}
-};
-
-
+void		solve(int *tetriminos, int nb_tetriminos);
+void	print_map(char **map, int map_size);
 # endif
