@@ -2,52 +2,45 @@
 
 #include "fillit.h"
 
-void	tetrimino_blocks(char **map, int nb_tetriminos)
+static void	push_array(char *map, int *blocks, int c)
+{
+	int		count;
+
+	count = -1;
+	while (++count <= 18)
+	{
+		if (!(ft_strcmp(g_patterns[count].pattern, map)))
+		{
+			blocks[c] = count;
+			break ;
+		}
+		if (count == 18)
+			exit_error();
+		// exit doesnt exit the program
+	}
+}
+
+int			*tetrimino_blocks(char **map, int nb_tetriminos)
 {
 	int		c;
-	int		g_count;
-	int		blocks[nb_tetriminos];
+	int		*blocks;
 	char	**map_location;
-	char	*g_map;
-
+	char	*conv_map;
 
 	c = 0;
+	printf("nb_tetriminos: %d\n", nb_tetriminos);
+	blocks = (int *)ft_memalloc(sizeof(int) * nb_tetriminos);
 	while (c < nb_tetriminos)
 	{
 		map_location = &(map[c * TETRIMINO_H]);
 		while (check_line(*map_location))
-		{
 			move_line_up(map_location);
-		}
 		while (check_row(map_location))
-		{
 			move_row_left(map_location);
-		}
-		g_map = convert_map(map_location);
-		(void)g_map;
-		g_count = -1;
-		// printf("g_map: %s\n", g_map);
-		while (++g_count <= 18)
-		{
-			if (!(ft_strcmp(g_patterns[g_count].pattern, g_map)))
-			{
-				blocks[c] = g_count;
-				break ;
-			}
-		}
-		printf("%d\n", blocks[c]);
-		// printf("%d\n", g_count);
-		// g_count = 19 - 1;
-		// while (ft_strcmp(g_patterns[g_count].pattern, g_map))
-		// 	g_count--;
-		// blocks[c] = g_count;
-		// printf("%d\n", g_count);
+		conv_map = convert_map(map_location);
+		push_array(conv_map, blocks, c);
+		// printf("%d\n", blocks[c]);
 		c++;
 	}
-	(void)*blocks;
-	// while (g_map)
-	// {
-	// 	ft_putstr(g_map++);
-	// 	ft_putchar('\n');
-	// }
+	return (blocks);
 }

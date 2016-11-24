@@ -53,35 +53,9 @@ static int	count_chars(int fd, char *buffer)
 	int	chars;
 	
 	chars = read(fd, buffer, BUFF_SIZE);
-	if ((chars + 1 ) % (TETRIMINO_SIZE + 1))
-		exit_error();
+	// if ((chars + 1 ) % (TETRIMINO_SIZE + 1))
+	// 	exit_error();
 	return (chars);
-}
-
-static char	**init_tetriminos(char *buffer, int chars)
-{
-	char		**tetriminos;
-	// int			nb_tetriminos;
-	// int			i;
-	
-	(void)chars;
-	// i = -1;
-	// nb_tetriminos = (chars + 1) / (TETRIMINO_SIZE + 1);
-	tetriminos = ft_strsplit(buffer, '\n');
-	// tetriminos = (char**)malloc(sizeof(tetriminos) * nb_tetriminos + 1);
-	// tetriminos[nb_tetriminos] = NULL;
-	// // while (++i < nb_tetriminos)
-	// {
-	// 	tetriminos[i] = (char*)malloc((sizeof(char) * TETRIMINO_SIZE + 1));
-	// 	ft_bzero(tetriminos[i], TETRIMINO_SIZE);
-	// 	// ft_memcpy(tetriminos[i], &buffer[i + TETRIMINO_SIZE], TETRIMINO_SIZE - 1);
-	// }  // memcpy buffer address wrong
-	// while (*tetriminos)
-	// {
-	// 	printf("%s\n", *tetriminos++);
-	// }
-
-	return (tetriminos);
 }
 
 static void	parse_map(int fd)
@@ -91,16 +65,15 @@ static void	parse_map(int fd)
 	int		nb_tetriminos;
 	int		chars;
 
-	//use bzero
-	//buffer[BUFF_SIZE] = '\0';
 	ft_bzero(buffer, BUFF_SIZE);
 	chars = count_chars(fd, buffer);
-	map = init_tetriminos(buffer, chars);
+	error_checking(buffer);
+	map = ft_strsplit(buffer, '\n');
 	nb_tetriminos = (chars + 1) / (TETRIMINO_SIZE + 1);
 	tetrimino_blocks(map, nb_tetriminos);
 }
 
-int			main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int	fd;
 	int	tetriminos[3] = {1, 7, 12};
@@ -109,7 +82,10 @@ int			main(int argc, char **argv)
 	if (argc != 2)
 		print_usage();
 	if((fd = open(argv[1], O_RDONLY)) == -1)
+	{
+		printf("can't open\n");
 		exit_error();
+	}
 	parse_map(fd);
 	// solve(tetriminos, 3);
 	(void)tetriminos;

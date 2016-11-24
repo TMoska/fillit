@@ -66,6 +66,7 @@ void	find_next_position(char **map, int map_size, const t_point tetri[4], int pa
 	int b;
 	t_point solution_point;
 
+	(void)solution_point;
 	a = -1;
 	while (++a <= (map_size - g_patterns[pattern_index].height))
 	{
