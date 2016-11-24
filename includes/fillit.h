@@ -17,7 +17,6 @@
 # define MAX_TETRIMINOS	26
 # define TETRIMINO_SIZE	TETRIMINO_W * TETRIMINO_H
 # define BUFF_SIZE		MAX_TETRIMINOS * (TETRIMINO_SIZE + 1) - 1
-// - 1, because there is no newline after last block
 
 typedef struct  s_point
 {
@@ -43,12 +42,13 @@ typedef struct	s_pattern
 extern const t_pattern g_patterns[19];
 void	print_usage(void);
 void	exit_error(void);
+void	error_checking(char *buffer);
 int		check_line(char *line);
 int		check_row(char	**map);
 void	move_line_up(char **map);
 void	move_row_left(char **map);
 char	*convert_map(char **map);
-void	tetrimino_blocks(char **map, int nb_tetriminos);
+int		*tetrimino_blocks(char **map, int nb_tetriminos);
 void		solve(int *tetriminos, int nb_tetriminos);
 void	print_map(char **map, int map_size);
 # endif

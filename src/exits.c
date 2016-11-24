@@ -21,5 +21,5 @@ void	print_usage(void)
 void	exit_error(void)
 {
 	ft_putstr("error\n");
-	exit(0);
+	exit(1);
 }

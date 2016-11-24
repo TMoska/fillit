@@ -75,12 +75,12 @@ char	*convert_map(char **map)
 	ft_bzero(g_map, 17);
 	// change 17 to TETRIMINO_SIZE
 	pos = 0;
-	while (pos < 3)
+	while (pos <= 3)
 	{
 		ft_strcpy(&g_map[pos * TETRIMINO_H], (const char *)map[pos]);
 		// printf("%s\n", &g_map[pos * TETRIMINO_H]);
 		pos++;
 	}
-	printf("%s\n", g_map);
+	// printf("%s\n", g_map);
 	return (g_map);
 }

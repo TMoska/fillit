@@ -27,7 +27,8 @@ SRC_FILES 	= 	main.c 	\
 								tetrimino_handeling.c \
 								handeling_tools.c \
 								algorithm.c \
-								print.c
+								print.c \
+								error_cases.c
 SOURCES 	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR		= obj
