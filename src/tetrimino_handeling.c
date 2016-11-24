@@ -24,15 +24,24 @@ void	tetrimino_blocks(char **map, int nb_tetriminos)
 			move_row_left(map_location);
 		}
 		g_map = convert_map(map_location);
-		// (void)g_map;
+		(void)g_map;
 		g_count = -1;
-		printf("g_map: %s\n", g_map);
+		// printf("g_map: %s\n", g_map);
 		while (++g_count <= 18)
 		{
-			printf("cmp: %i\n", ft_strcmp(g_patterns[g_count].pattern, g_map));
+			if (!(ft_strcmp(g_patterns[g_count].pattern, g_map)))
+			{
+				blocks[c] = g_count;
+				break ;
+			}
 		}
-		blocks[c] = g_count;
-		printf("%d\n", g_count);
+		printf("%d\n", blocks[c]);
+		// printf("%d\n", g_count);
+		// g_count = 19 - 1;
+		// while (ft_strcmp(g_patterns[g_count].pattern, g_map))
+		// 	g_count--;
+		// blocks[c] = g_count;
+		// printf("%d\n", g_count);
 		c++;
 	}
 	(void)*blocks;

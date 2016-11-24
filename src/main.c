@@ -111,7 +111,8 @@ int			main(int argc, char **argv)
 	if((fd = open(argv[1], O_RDONLY)) == -1)
 		exit_error();
 	parse_map(fd);
-	solve(tetriminos, 3);
+	// solve(tetriminos, 3);
+	(void)tetriminos;
 	ft_putstr("\n----------OK---------\n");
 	return (0);
 }
