@@ -23,7 +23,6 @@ INC_FLAGS	= -I./includes -I $(LIB_PATH)/includes
 
 SRC_DIR 	= src
 SRC_FILES 	= 	main.c 	\
-								utils.c \
 								exits.c \
 								tetrimino_handeling.c \
 								handeling_tools.c \
