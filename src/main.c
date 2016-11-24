@@ -53,12 +53,14 @@ static void	parse_map(int fd)
 int			main(int argc, char **argv)
 {
 	int	fd;
+	int	tetriminos[3] = {1, 7, 12};
 
+	(void)parse_map;
 	if (argc != 2)
 		print_usage();
 	if((fd = open(argv[1], O_RDONLY)) == -1)
 		exit_error();
-	parse_map(fd);
+	solve(tetriminos, 3);
 	ft_putstr("OK\n");
 	return (0);
 }

@@ -23,8 +23,10 @@ INC_FLAGS	= -I./includes -I $(LIB_PATH)/includes
 
 SRC_DIR 	= src
 SRC_FILES 	= 	main.c 	\
-				utils.c \
-				exits.c
+			utils.c \
+			exits.c \
+			algorithm.c \
+			print.c
 SOURCES 	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR		= obj
