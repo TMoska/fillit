@@ -104,7 +104,7 @@ void		solve(int *tetriminos, int nb_tetriminos)
 	while (i < 1)
 	{
 		printf("Allocating block #%i\n", i);
-		find_next_position(map, map_size, g_patterns[tetriminos[i]].coordinates.points, pattern_index);
+		find_next_position(map, map_size, g_patterns[tetriminos[i]].coordinates.points, tetriminos[i]);
 		// allocate_tetri(map, g_patterns[tetriminos[i]].coordinates.points, i, map_size, tetriminos[i]);
 		i++;
 	}
