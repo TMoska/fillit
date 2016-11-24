@@ -25,7 +25,8 @@ SRC_DIR 	= src
 SRC_FILES 	= 	main.c 	\
 				utils.c \
 				exits.c \
-				tetrimino_handeling.c
+				tetrimino_handeling.c \
+				handeling_tools.c
 SOURCES 	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR		= obj

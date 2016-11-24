@@ -28,6 +28,34 @@ typedef struct		s_pattern
 void	print_usage(void);
 void	exit_error(void);
 
-void	tetrimino_blocks(char **map);
+int		check_line(char *line);
+int		check_row(char	**map);
+void	move_line_up(char **map);
+void	move_row_left(char **map);
+char	*convert_map(char **map);
+void	tetrimino_blocks(char **map, int nb_tetriminos);
+
+const t_pattern		g_patterns[19] = {
+	{ "###...#.........", 3},
+	{ ".#...#..##......", 3},
+	{ "#...###.........", 3},
+	{ "##..#...#.......", 3},
+	{ "###.#...........", 3},
+	{ "##...#...#......", 3},
+	{ "..#.###.........", 3},
+	{ "#...#...##......", 3},
+	{ "###..#..........", 3},
+	{ ".#..##...#......", 3},
+	{ ".#..###.........", 3},
+	{ "#...##..#.......", 3},
+	{ ".##.##..........", 3},
+	{ "#...##...#......", 3},
+	{ "##...##.........", 3},
+	{ ".#..##..#.......", 3},
+	{ "####............", 4},
+	{ "#...#...#...#...", 4},
+	{ "##..##..........", 2}
+};
+
 
 # endif

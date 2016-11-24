@@ -2,47 +2,40 @@
 
 #include "fillit.h"
 
-static int	check_line(char *line)
-{
-	int	ret;
-
-	ret = 1;
-	while (*line)
-	{
-		if (*line++ != '.')
-			ret = 0;
-	}
-	return (ret);
-}
-
-static int	check_row(char **map)
-{
-	int	ret;
-	int	count;
-
-	count = 4;
-	ret = 1;
-	while (count--)
-	{
-		if (map[count][0] != '.')
-			ret = 0;
-	}
-	return (ret);
-}
-
-void	tetrimino_blocks(char **map)
+void	tetrimino_blocks(char **map, int nb_tetriminos)
 {
 	int		c;
-	char	*tmp;
+	int		g_count;
+	int		blocks[nb_tetriminos];
+	char	**map_location;
+	char	*g_map;
+
 
 	c = 0;
-	while ()
+	while (c < nb_tetriminos)
 	{
-		if (check_row)
+		map_location = &(map[c * TETRIMINO_H]);
+		while (check_line(*map_location))
 		{
-			tmp = map[c];
-			map[c] = map[c + 1]
-			map[c + 4] //start moving tetrimino to right place
+			move_line_up(map_location);
 		}
+		while (check_row(map_location))
+		{
+			move_row_left(map_location);
+		}
+		g_map = convert_map(map_location);
+		// (void)g_map;
+		g_count = 19 - 1;
+		while (ft_strcmp(g_patterns[g_count].pattern, g_map))
+			g_count--;
+		blocks[c] = g_count;
+		printf("%d\n", g_count);
+		c++;
 	}
+	(void)*blocks;
+	// while (g_map)
+	// {
+	// 	ft_putstr(g_map++);
+	// 	ft_putchar('\n');
+	// }
 }
