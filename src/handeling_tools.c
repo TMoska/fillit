@@ -1,10 +1,20 @@
-// header
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handeling_tools.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/25 16:11:05 by tmoska            #+#    #+#             */
+/*   Updated: 2016/11/25 16:12:12 by tmoska           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
 
-int	check_line(char *line)
+int			check_line(char *line)
 {
-	int	ret;
+	int		ret;
 
 	ret = 1;
 	while (*line)
@@ -15,10 +25,10 @@ int	check_line(char *line)
 	return (ret);
 }
 
-int	check_row(char **map)
+int			check_row(char **map)
 {
-	int	ret;
-	int	count;
+	int		ret;
+	int		count;
 
 	count = 4;
 	ret = 1;
@@ -30,7 +40,7 @@ int	check_row(char **map)
 	return (ret);
 }
 
-void	move_line_up(char **map)
+void		move_line_up(char **map)
 {
 	char	*tmp;
 	int		line_pos;
@@ -45,10 +55,11 @@ void	move_line_up(char **map)
 	map[line_pos] = tmp;
 }
 
-void	move_row_left(char **map)
+void		move_row_left(char **map)
 {
 	int		row_pos;
 	int		line_pos;
+
 	row_pos = 0;
 	line_pos = 0;
 	while (row_pos < 3)
@@ -65,7 +76,7 @@ void	move_row_left(char **map)
 		map[line_pos++][row_pos] = '.';
 }
 
-char	*convert_map(char **map)
+char		*convert_map(char **map)
 {
 	char	*g_map;
 	int		pos;

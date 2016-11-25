@@ -6,7 +6,7 @@
 #    By: tmoska <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/23 11:03:20 by tmoska            #+#    #+#              #
-#    Updated: 2016/11/24 02:25:33 by mpaju            ###   ########.fr        #
+#    Updated: 2016/11/25 15:17:33 by tmoska           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,13 @@ INC_FLAGS	= -I./includes -I $(LIB_PATH)/includes
 
 SRC_DIR 	= src
 SRC_FILES 	= 	main.c 	\
-								exits.c \
-								tetrimino_handeling.c \
-								handeling_tools.c \
-								algorithm.c \
-								print.c \
-								error_cases.c
+				exits.c \
+				tetrimino_handeling.c \
+				handeling_tools.c \
+				algorithm.c \
+				print.c \
+				error_cases.c \
+				tetri.c
 SOURCES 	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJECTS		= $(SOURCES:.c=.o)

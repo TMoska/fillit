@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/25 16:04:59 by tmoska            #+#    #+#             */
+/*   Updated: 2016/11/25 16:05:00 by tmoska           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void		print_map(char **map, int map_size)
@@ -6,8 +18,8 @@ void		print_map(char **map, int map_size)
 
 	row = -1;
 	while (++row < map_size)
-  {
+	{
 		ft_putstr(map[row]);
-    ft_putchar('\n');
-  }
+		ft_putchar('\n');
+	}
 }

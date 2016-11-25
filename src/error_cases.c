@@ -1,4 +1,14 @@
-// header
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_cases.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/25 16:05:19 by tmoska            #+#    #+#             */
+/*   Updated: 2016/11/25 16:05:41 by tmoska           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
 
@@ -10,7 +20,7 @@ void	error_checking(char *buffer)
 	int	nl_c;
 
 	size = ft_strlen(buffer);
-	if ((size % (TETRIMINO_SIZE + 1))- TETRIMINO_SIZE)
+	if ((size % (TETRIMINO_SIZE + 1)) - TETRIMINO_SIZE)
 		exit_error();
 	i = -1;
 	c = 0;

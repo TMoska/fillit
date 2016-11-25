@@ -1,135 +1,93 @@
-// tetriminos = [1, 7, 12];
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algorithm.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/25 15:10:49 by tmoska            #+#    #+#             */
+/*   Updated: 2016/11/25 16:43:51 by tmoska           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
 
-int		map_start_size(int *tetriminos, int nb_tetriminos)
+int			map_start_size(int *tet, int nb_tet)
 {
-	int	i;
-	int	map_size;
+	int		i;
+	int		map_size;
 
 	i = 0;
-	map_size = g_patterns[tetriminos[0]].min_map_size;
-	while (++i < nb_tetriminos)
-		if (g_patterns[tetriminos[i]].min_map_size > map_size)
-			map_size = g_patterns[tetriminos[i]].min_map_size;
-	while (nb_tetriminos * 4 > map_size * map_size)
+	map_size = g_pattrn[tet[0]].min_map_size;
+	while (++i < nb_tet)
+		if (g_pattrn[tet[i]].min_map_size > map_size)
+			map_size = g_pattrn[tet[i]].min_map_size;
+	while (nb_tet * 4 > map_size * map_size)
 		map_size++;
 	return (map_size);
 }
 
-char	**create_map(int map_size)
+int			point_ok(char **map, const t_point tet[4], int a, int b)
 {
-	char	**map;
-	int		a;
-	int		b;
-
-	a = 0;
-
-	b = 0;
-	map = (char**)malloc(sizeof(*map) * map_size + 1);
-	map[map_size] = NULL;
-	while (a < map_size)
-	{
-		map[a] = (char*)malloc(sizeof(char) * map_size + 1);
-		map[a][map_size] = '\0';
-		while (b < map_size)
-		{
-			map[a][b] = '.';
-			b++;
-		}
-		b = 0;
-		a++;
-	}
-	return (map);
-}
-
-int		point_can_be_used(char **map, const t_point tetri[4], int a, int b)
-{
-	int c;
-	int fits;
+	int		c;
+	int		fits;
 
 	c = -1;
 	fits = 0;
 	while (++c < 4)
-		if (!ft_strncmp(".", &map[tetri[c].x + a][tetri[c].y + b], 1))
-			fits++;		
+		if (!ft_strncmp(".", &map[tet[c].x + a][tet[c].y + b], 1))
+			fits++;
 	if (fits == 4)
 		return (1);
 	else
 		return (0);
 }
 
-void	allocate_tetri(char **map, const t_point tetri[4], int tetri_index, t_point solution_point	)
+int			rec_map(char **map, int *tet, int map_size, int c_tet, int nb_tet)
 {
-	int	i;
-
-	i = -1;
-	while (++i < 4)
-		map[solution_point.x + tetri[i].x][solution_point.y + tetri[i].y] = 65 + tetri_index;
-}
-
-void	delete_tetri(char **map, const t_point tetri[4], t_point solution_point	)
-{
-	int	i;
-
-	i = -1;
-	while (++i < 4)
-		map[solution_point.x + tetri[i].x][solution_point.y + tetri[i].y] = '.';
-}
-
-int			rec_map(char **map, int *tetriminos, int map_size, int tetri_count, int nb_tetriminos)
-{
-	t_point sp;
-	int	a;
-	int	b;
+	t_point	sp;
+	int		a;
+	int		b;
 
 	a = -1;
-	while (++a <= (map_size - g_patterns[tetriminos[tetri_count]].height))
+	while (++a <= (map_size - g_pattrn[tet[c_tet]].height))
 	{
 		b = -1;
-		while (++b <= (map_size - g_patterns[tetriminos[tetri_count]].width))
+		while (++b <= (map_size - g_pattrn[tet[c_tet]].width))
 		{
-			if (point_can_be_used(map, g_patterns[tetriminos[tetri_count]].coordinates.points, a, b))
+			if (point_ok(map, g_pattrn[tet[c_tet]].cord.pts, a, b))
 			{
 				sp.x = a;
 				sp.y = b;
-				allocate_tetri(map, g_patterns[tetriminos[tetri_count]].coordinates.points, tetri_count, sp);
-				if (tetri_count == nb_tetriminos - 1) // Number of tetriminos - 1		T.M.
+				al_tetri(map, g_pattrn[tet[c_tet]].cord.pts, c_tet, sp);
+				if (c_tet == nb_tet - 1 || rec_map(map, tet, map_size, c_tet + 1, nb_tet))
 					return (1);
 				else
-				{
-					if(rec_map(map, tetriminos, map_size, tetri_count + 1, nb_tetriminos))
-						return (1);
-					else
-					{
-						delete_tetri(map, g_patterns[tetriminos[tetri_count]].coordinates.points, sp);
-					}
-				}
+					del_tetri(map, g_pattrn[tet[c_tet]].cord.pts, sp);
 			}
 		}
 	}
 	return (0);
 }
 
-char		**rec_solver(int *tetriminos, int map_size, int nb_tetriminos)
+char		**rec_solver(int *tet, int map_size, int nb_tet)
 {
-	char **map;
+	char	**map;
 
 	map = create_map(map_size);
-	if (!rec_map(map, tetriminos, map_size, 0, nb_tetriminos))
-		return (rec_solver(tetriminos, map_size + 1, nb_tetriminos));
+	if (!rec_map(map, tet, map_size, 0, nb_tet))
+		return (rec_solver(tet, map_size + 1, nb_tet));
 	else
 	{
 		print_map(map, map_size);
-		exit (0);
+		exit(0);
 	}
 }
 
-void		solve(int *tetriminos, int nb_tetriminos)
+void		solve(int *tet, int nb_tet)
 {
-	int	map_size;
+	int		map_size;
 
-	map_size = map_start_size(tetriminos, nb_tetriminos);
-	rec_solver(tetriminos, map_size, nb_tetriminos);
+	map_size = map_start_size(tet, nb_tet);
+	rec_solver(tet, map_size, nb_tet);
 }
-	

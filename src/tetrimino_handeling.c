@@ -1,15 +1,25 @@
-//header
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tetrimino_handeling.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/25 16:03:40 by tmoska            #+#    #+#             */
+/*   Updated: 2016/11/25 16:04:29 by tmoska           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	push_array(char *map, int *blocks, int c)
+static void		push_array(char *map, int *blocks, int c)
 {
-	int		count;
+	int			count;
 
 	count = -1;
 	while (++count <= 18)
 	{
-		if (!(ft_strcmp(g_patterns[count].pattern, map)))
+		if (!(ft_strcmp(g_pattrn[count].pattern, map)))
 		{
 			blocks[c] = count;
 			break ;
@@ -33,7 +43,7 @@ static void		legit_tetrimino(char **map)
 	while (c_c--)
 	{
 		while (r_c--)
-		{	
+		{
 			if (map[c_c][r_c] == '#')
 				check_hash--;
 			if (map[c_c][r_c] == '.')
@@ -45,12 +55,12 @@ static void		legit_tetrimino(char **map)
 		exit_error();
 }
 
-int			*tetrimino_blocks(char **map, int nb_tetriminos)
+int				*tetrimino_blocks(char **map, int nb_tetriminos)
 {
-	int		c;
-	int		*blocks;
-	char	**map_location;
-	char	*conv_map;
+	int			c;
+	int			*blocks;
+	char		**map_location;
+	char		*conv_map;
 
 	c = 0;
 	blocks = (int *)ft_memalloc(sizeof(int) * nb_tetriminos);
