@@ -49,12 +49,11 @@ void	move_row_left(char **map)
 {
 	int		row_pos;
 	int		line_pos;
-
 	row_pos = 0;
 	line_pos = 0;
 	while (row_pos < 3)
 	{
-		while (line_pos < 3)
+		while (line_pos <= 3)
 		{
 			map[line_pos][row_pos] = map[line_pos][row_pos + 1];
 			line_pos++;
@@ -62,7 +61,7 @@ void	move_row_left(char **map)
 		row_pos++;
 		line_pos = 0;
 	}
-	while (line_pos < 3)
+	while (line_pos <= 3)
 		map[line_pos++][row_pos] = '.';
 }
 

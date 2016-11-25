@@ -58,25 +58,27 @@ static int	count_chars(int fd, char *buffer)
 	return (chars);
 }
 
-static void	parse_map(int fd)
+int 	*parse_map(int fd, int *nb_tetriminos)
 {
 	char	buffer[BUFF_SIZE + 1];
 	char	**map;
-	int		nb_tetriminos;
 	int		chars;
+	int		*tetriminos;
 
 	ft_bzero(buffer, BUFF_SIZE);
 	chars = count_chars(fd, buffer);
 	error_checking(buffer);
 	map = ft_strsplit(buffer, '\n');
-	nb_tetriminos = (chars + 1) / (TETRIMINO_SIZE + 1);
-	tetrimino_blocks(map, nb_tetriminos);
+	*nb_tetriminos = (chars + 1) / (TETRIMINO_SIZE + 1);
+	tetriminos = tetrimino_blocks(map, *nb_tetriminos);
+	return (tetriminos);
 }
 
 int		main(int argc, char **argv)
 {
 	int	fd;
-	int	tetriminos[3] = {1, 7, 12};
+	int	*tetriminos;
+	int	nb_tetriminos;
 
 	(void)parse_map;
 	if (argc != 2)
@@ -86,9 +88,8 @@ int		main(int argc, char **argv)
 		printf("can't open\n");
 		exit_error();
 	}
-	parse_map(fd);
-	// solve(tetriminos, 3);
-	(void)tetriminos;
+	tetriminos = parse_map(fd, &nb_tetriminos);
+	solve(tetriminos, nb_tetriminos);
 	ft_putstr("\n----------OK---------\n");
 	return (0);
 }

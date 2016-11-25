@@ -75,12 +75,13 @@ void	delete_tetri(char **map, const t_point tetri[4], int tetri_index, t_point s
 	int	i;
 
 	// printf("Deleting block #%i\n", tetri_index);
+	(void)tetri_index;
 	i = -1;
 	while (++i < 4)
 		map[solution_point.x + tetri[i].x][solution_point.y + tetri[i].y] = '.';
 }
 
-int			rec_map(char **map, int *tetriminos, int map_size, int tetri_count)
+int			rec_map(char **map, int *tetriminos, int map_size, int tetri_count, int nb_tetriminos)
 {
 	t_point sp;
 	int	a;
@@ -100,7 +101,7 @@ int			rec_map(char **map, int *tetriminos, int map_size, int tetri_count)
 				sp.x = a;
 				sp.y = b;
 				allocate_tetri(map, g_patterns[tetriminos[tetri_count]].coordinates.points, tetri_count, sp);
-				if (tetri_count == 2) // Number of tetriminos - 1		T.M.
+				if (tetri_count == nb_tetriminos - 1) // Number of tetriminos - 1		T.M.
 				{
 					// printf("TETRI COUNT 2\n");
 					return (1);
@@ -110,7 +111,7 @@ int			rec_map(char **map, int *tetriminos, int map_size, int tetri_count)
 				{
 					// printf("next one\n");
 					// exit(0);
-					if(rec_map(map, tetriminos, map_size, tetri_count + 1))
+					if(rec_map(map, tetriminos, map_size, tetri_count + 1, nb_tetriminos))
 						return (1);
 					else
 					{
@@ -124,13 +125,13 @@ int			rec_map(char **map, int *tetriminos, int map_size, int tetri_count)
 	return (0);
 }
 
-char		**rec_solver(int *tetriminos, int map_size)
+char		**rec_solver(int *tetriminos, int map_size, int nb_tetriminos)
 {
 	char **map;
 
 	map = create_map(map_size);
-	if (!rec_map(map, tetriminos, map_size, 0))
-		return (rec_solver(tetriminos, map_size + 1));
+	if (!rec_map(map, tetriminos, map_size, 0, nb_tetriminos))
+		return (rec_solver(tetriminos, map_size + 1, nb_tetriminos));
 	else
 	{
 		print_map(map, map_size);
@@ -144,6 +145,6 @@ void		solve(int *tetriminos, int nb_tetriminos)
 
 	// printf("\n");
 	map_size = map_start_size(tetriminos, nb_tetriminos);
-	rec_solver(tetriminos, map_size);
+	rec_solver(tetriminos, map_size, nb_tetriminos);
 }
 	
