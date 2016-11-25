@@ -20,10 +20,12 @@ static void	push_array(char *map, int *blocks, int c)
 	}
 }
 
-void		legit_tetrimino(char **map)
+static void		legit_tetrimino(char **map)
 {
 	int		r_c;
 	int		c_c;
+	int		check_hash;
+	int		check_dots;
 
 	r_c = 4;
 	c_c = 4;
