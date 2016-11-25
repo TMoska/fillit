@@ -31,10 +31,9 @@ SRC_FILES 	= 	main.c 	\
 								error_cases.c
 SOURCES 	= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
-OBJ_DIR		= obj
-OBJECTS		= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
+OBJECTS		= $(SOURCES:.c=.o)
 
-all: obj $(NAME)
+all: $(NAME)
 
 $(NAME): $(LIB) $(OBJECTS)
 	@$(CC) $(FLAGS) -o $@ $^ $(LIB_LINK)
@@ -44,15 +43,11 @@ $(NAME): $(LIB) $(OBJECTS)
 $(LIB):
 	@make -C $(LIB_PATH)
 
-obj:
-	@mkdir -p $(OBJ_DIR)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/*.h
+%.o: %.c $(INC_DIR)/*.h
 	@$(CC) $(FLAGS) $(INC_FLAGS) -c -o $@ $<
 
 clean:
-	@rm -f $(OBJS)
-	@rm -rf $(OBJ_DIR)
+	@rm -f $(OBJECTS)
 	@find . \( -name "*~" -o -name "*.swp" -o -name ".DS_Store" \) -delete
 	@make clean -C $(LIB_PATH)
 

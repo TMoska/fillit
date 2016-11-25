@@ -16,7 +16,6 @@ static void	push_array(char *map, int *blocks, int c)
 		}
 		if (count == 18)
 			exit_error();
-		// exit doesnt exit the program
 	}
 }
 
@@ -42,9 +41,6 @@ static void		legit_tetrimino(char **map)
 		}
 		r_c = 4;
 	}
-
-	// printf("has: %d dots: %d\n", check_hash, check_dots);
-	fflush(stdout);
 	if (check_dots || check_hash)
 		exit_error();
 }
@@ -57,7 +53,6 @@ int			*tetrimino_blocks(char **map, int nb_tetriminos)
 	char	*conv_map;
 
 	c = 0;
-	// printf("nb_tetriminos: %d\n", nb_tetriminos);
 	blocks = (int *)ft_memalloc(sizeof(int) * nb_tetriminos);
 	while (c < nb_tetriminos)
 	{
@@ -69,7 +64,6 @@ int			*tetrimino_blocks(char **map, int nb_tetriminos)
 			move_row_left(map_location);
 		conv_map = convert_map(map_location);
 		push_array(conv_map, blocks, c);
-		// printf("%d\n", blocks[c]);
 		c++;
 	}
 	return (blocks);
