@@ -48,7 +48,7 @@ static void		legit_tetrimino(char **map)
 	if (check_dots || check_hash)
 	{
 		printf("fjgsoijfsrpfj\n");
-		// exit_error();
+		exit_error();
 	}
 }
 
