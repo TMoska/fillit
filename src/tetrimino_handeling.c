@@ -43,13 +43,17 @@ static void		legit_tetrimino(char **map)
 		r_c = 4;
 	}
 
-	printf("has: %d dots: %d\n", check_hash, check_dots);
+	// printf("has: %d dots: %d\n", check_hash, check_dots);
 	fflush(stdout);
 	if (check_dots || check_hash)
+<<<<<<< HEAD
 	{
 		printf("fjgsoijfsrpfj\n");
 		exit_error();
 	}
+=======
+		exit_error();
+>>>>>>> cb346e33c1453d943585b2450f8de3d134e8529c
 }
 
 int			*tetrimino_blocks(char **map, int nb_tetriminos)
@@ -60,7 +64,7 @@ int			*tetrimino_blocks(char **map, int nb_tetriminos)
 	char	*conv_map;
 
 	c = 0;
-	printf("nb_tetriminos: %d\n", nb_tetriminos);
+	// printf("nb_tetriminos: %d\n", nb_tetriminos);
 	blocks = (int *)ft_memalloc(sizeof(int) * nb_tetriminos);
 	while (c < nb_tetriminos)
 	{
