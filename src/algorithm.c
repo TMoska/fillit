@@ -101,9 +101,7 @@ int			rec_map(char **map, int *tetriminos, int map_size, int tetri_count, int nb
 					if(rec_map(map, tetriminos, map_size, tetri_count + 1, nb_tetriminos))
 						return (1);
 					else
-					{
 						delete_tetri(map, g_patterns[tetriminos[tetri_count]].coordinates.points, sp);
-					}
 				}
 			}
 		}
