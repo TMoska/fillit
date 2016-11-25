@@ -6,7 +6,7 @@
 /*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 16:06:50 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/25 16:10:02 by tmoska           ###   ########.fr       */
+/*   Updated: 2016/11/25 17:14:17 by tmoska           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct			s_pattern
 	t_tetriminos		cord;
 }						t_pattern;
 
-typedef struct 			s_map_info
+typedef struct			s_map_info
 {
 	int					m_s;
 	int					n_tet;
