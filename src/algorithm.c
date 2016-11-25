@@ -12,17 +12,17 @@
 
 #include "fillit.h"
 
-int			map_start_size(int *tet, int nb_tet)
+int			map_start_size(int *tet, int nb_tetriminos)
 {
 	int		i;
 	int		map_size;
 
 	i = 0;
 	map_size = g_pattrn[tet[0]].min_map_size;
-	while (++i < nb_tet)
+	while (++i < nb_tetriminos)
 		if (g_pattrn[tet[i]].min_map_size > map_size)
 			map_size = g_pattrn[tet[i]].min_map_size;
-	while (nb_tet * 4 > map_size * map_size)
+	while (nb_tetriminos * 4 > map_size * map_size)
 		map_size++;
 	return (map_size);
 }
@@ -43,24 +43,24 @@ int			point_ok(char **map, const t_point tet[4], int a, int b)
 		return (0);
 }
 
-int			rec_map(char **map, int *tet, int map_size, int c_tet, int nb_tet)
+int			recs(char **map, int *tet, t_map_info mi, int c_tet)
 {
 	t_point	sp;
 	int		a;
 	int		b;
 
 	a = -1;
-	while (++a <= (map_size - g_pattrn[tet[c_tet]].height))
+	while (++a <= (mi.m_s - g_pattrn[tet[c_tet]].height))
 	{
 		b = -1;
-		while (++b <= (map_size - g_pattrn[tet[c_tet]].width))
+		while (++b <= (mi.m_s - g_pattrn[tet[c_tet]].width))
 		{
 			if (point_ok(map, g_pattrn[tet[c_tet]].cord.pts, a, b))
 			{
 				sp.x = a;
 				sp.y = b;
 				al_tetri(map, g_pattrn[tet[c_tet]].cord.pts, c_tet, sp);
-				if (c_tet == nb_tet - 1 || rec_map(map, tet, map_size, c_tet + 1, nb_tet))
+				if (c_tet == mi.n_tet - 1 || recs(map, tet, mi, c_tet + 1))
 					return (1);
 				else
 					del_tetri(map, g_pattrn[tet[c_tet]].cord.pts, sp);
@@ -70,13 +70,16 @@ int			rec_map(char **map, int *tet, int map_size, int c_tet, int nb_tet)
 	return (0);
 }
 
-char		**rec_solver(int *tet, int map_size, int nb_tet)
+char		**rec_solver(int *tet, int map_size, int nb_tetriminos)
 {
-	char	**map;
+	char		**map;
+	t_map_info	mi;
 
+	mi.m_s = map_size;
+	mi.n_tet = nb_tetriminos;
 	map = create_map(map_size);
-	if (!rec_map(map, tet, map_size, 0, nb_tet))
-		return (rec_solver(tet, map_size + 1, nb_tet));
+	if (!recs(map, tet, mi, 0))
+		return (rec_solver(tet, map_size + 1, nb_tetriminos));
 	else
 	{
 		print_map(map, map_size);
@@ -84,10 +87,10 @@ char		**rec_solver(int *tet, int map_size, int nb_tet)
 	}
 }
 
-void		solve(int *tet, int nb_tet)
+void		solve(int *tet, int nb_tetriminos)
 {
 	int		map_size;
 
-	map_size = map_start_size(tet, nb_tet);
-	rec_solver(tet, map_size, nb_tet);
+	map_size = map_start_size(tet, nb_tetriminos);
+	rec_solver(tet, map_size, nb_tetriminos);
 }

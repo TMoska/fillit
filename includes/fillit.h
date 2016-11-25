@@ -50,6 +50,12 @@ typedef struct			s_pattern
 	t_tetriminos		cord;
 }						t_pattern;
 
+typedef struct 			s_map_info
+{
+	int					m_s;
+	int					n_tet;
+}						t_map_info;
+
 extern const t_pattern	g_pattrn[19];
 void					print_usage(void);
 void					exit_error(void);
@@ -61,10 +67,10 @@ void					move_row_left(char **map);
 char					*convert_map(char **map);
 int						*tetrimino_blocks(char **map, int nb_tetriminos);
 void					solve(int *tetriminos, int nb_tetriminos);
-void					print_map(char **map, int map_size);
+void					print_map(char **map, int m_s);
 void					al_tetri(char **map, const t_point tetri[4], \
 						int tetri_index, t_point sp);
 void					del_tetri(char **map, const t_point tetri[4], \
 						t_point sp);
-char					**create_map(int map_size);
+char					**create_map(int m_s);
 #endif

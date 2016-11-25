@@ -12,12 +12,12 @@
 
 #include "libft.h"
 
-void		print_map(char **map, int map_size)
+void		print_map(char **map, int m_s)
 {
 	int row;
 
 	row = -1;
-	while (++row < map_size)
+	while (++row < m_s)
 	{
 		ft_putstr(map[row]);
 		ft_putchar('\n');

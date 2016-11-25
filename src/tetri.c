@@ -30,7 +30,7 @@ void		del_tetri(char **map, const t_point tetri[4], t_point sp)
 		map[sp.x + tetri[i].x][sp.y + tetri[i].y] = '.';
 }
 
-char		**create_map(int map_size)
+char		**create_map(int m_s)
 {
 	char	**map;
 	int		a;
@@ -38,13 +38,13 @@ char		**create_map(int map_size)
 
 	a = 0;
 	b = 0;
-	map = (char**)malloc(sizeof(*map) * map_size + 1);
-	map[map_size] = NULL;
-	while (a < map_size)
+	map = (char**)malloc(sizeof(*map) * m_s + 1);
+	map[m_s] = NULL;
+	while (a < m_s)
 	{
-		map[a] = (char*)malloc(sizeof(char) * map_size + 1);
-		map[a][map_size] = '\0';
-		while (b < map_size)
+		map[a] = (char*)malloc(sizeof(char) * m_s + 1);
+		map[a][m_s] = '\0';
+		while (b < m_s)
 		{
 			map[a][b] = '.';
 			b++;
