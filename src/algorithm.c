@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int			map_start_size(int *tet, int nb_tetriminos)
+static int	map_start_size(int *tet, int nb_tetriminos)
 {
 	int		i;
 	int		map_size;
@@ -27,7 +27,7 @@ int			map_start_size(int *tet, int nb_tetriminos)
 	return (map_size);
 }
 
-int			point_ok(char **map, const t_point tet[4], int a, int b)
+static int	point_ok(char **map, const t_point tet[4], int a, int b)
 {
 	int		c;
 	int		fits;
@@ -43,7 +43,7 @@ int			point_ok(char **map, const t_point tet[4], int a, int b)
 		return (0);
 }
 
-int			recs(char **map, int *tet, t_map_info mi, int c_tet)
+static int	recs(char **map, int *tet, t_map_info mi, int c_tet)
 {
 	t_point	sp;
 	int		a;
@@ -70,7 +70,7 @@ int			recs(char **map, int *tet, t_map_info mi, int c_tet)
 	return (0);
 }
 
-char		**rec_solver(int *tet, int map_size, int nb_tetriminos)
+static char	**rec_solver(int *tet, int map_size, int nb_tetriminos)
 {
 	char		**map;
 	t_map_info	mi;

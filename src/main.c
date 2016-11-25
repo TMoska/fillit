@@ -42,7 +42,7 @@ static int			count_chars(int fd, char *buffer)
 	return (chars);
 }
 
-int					*parse_map(int fd, int *nb_tetriminos)
+static int			*parse_map(int fd, int *nb_tetriminos)
 {
 	char			buffer[BUFF_SIZE + 1];
 	char			**map;
