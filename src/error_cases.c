@@ -6,14 +6,17 @@
 /*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 16:05:19 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/25 17:04:00 by mpaju            ###   ########.fr       */
+/*   Updated: 2016/11/25 17:06:18 by mpaju            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	check_map(char *buffer, int i, int c, int nl_c)
+static void	check_map(char *buffer, int i, int c, int size)
 {
+	int	nl_c;
+
+	nl_c = 0;
 	while (++i < size)
 	{
 		if (nl_c == 4 && buffer[i] == '\n')
@@ -39,13 +42,11 @@ void		error_checking(char *buffer)
 	int	size;
 	int	i;
 	int	c;
-	int	nl_c;
 
 	size = ft_strlen(buffer);
 	if ((size % (TETRIMINO_SIZE + 1)) - TETRIMINO_SIZE)
 		exit_error();
 	i = -1;
 	c = 0;
-	nl_c = 0;
-	check_map(buffer, i, c, nl_c);
+	check_map(buffer, i, c, size);
 }
