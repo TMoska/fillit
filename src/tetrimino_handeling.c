@@ -20,6 +20,29 @@ static void	push_array(char *map, int *blocks, int c)
 	}
 }
 
+void		legit_tetrimino(char **map)
+{
+	int		r_c;
+	int		c_c;
+
+	r_c = 4;
+	c_c = 4;
+	check_dots = 12;
+	check_hash = 4;
+	while (c_c--)
+	{
+		while (r_c--)
+		{	
+			if (map[c_c][r_c] == '#')
+				check_hash--;
+			if (map[c_c][r_c] == '.')
+				check_dots--;
+		}
+	}
+	if (!check_dots || !check_hash)
+		exit_error();
+}
+
 int			*tetrimino_blocks(char **map, int nb_tetriminos)
 {
 	int		c;
@@ -33,6 +56,7 @@ int			*tetrimino_blocks(char **map, int nb_tetriminos)
 	while (c < nb_tetriminos)
 	{
 		map_location = &(map[c * TETRIMINO_H]);
+		legit_tetrimino(map_location);
 		while (check_line(*map_location))
 			move_line_up(map_location);
 		while (check_row(map_location))
