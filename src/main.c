@@ -53,8 +53,6 @@ static int	count_chars(int fd, char *buffer)
 	int	chars;
 	
 	chars = read(fd, buffer, BUFF_SIZE);
-	// if ((chars + 1 ) % (TETRIMINO_SIZE + 1))
-	// 	exit_error();
 	return (chars);
 }
 
@@ -80,16 +78,11 @@ int		main(int argc, char **argv)
 	int	*tetriminos;
 	int	nb_tetriminos;
 
-	(void)parse_map;
 	if (argc != 2)
 		print_usage();
 	if((fd = open(argv[1], O_RDONLY)) == -1)
-	{
-		printf("can't open\n");
 		exit_error();
-	}
 	tetriminos = parse_map(fd, &nb_tetriminos);
 	solve(tetriminos, nb_tetriminos);
-	ft_putstr("\n----------OK---------\n");
 	return (0);
 }
