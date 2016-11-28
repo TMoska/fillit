@@ -37,10 +37,7 @@ static int	point_ok(char **map, const t_point tet[4], int a, int b)
 	while (++c < 4)
 		if (!ft_strncmp(".", &map[tet[c].x + a][tet[c].y + b], 1))
 			fits++;
-	if (fits == 4)
-		return (1);
-	else
-		return (0);
+	return (fits == 4);
 }
 
 static int	recs(char **map, int *tet, t_map_info mi, int c_tet)
