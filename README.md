@@ -1,4 +1,4 @@
-Libft - TMoska [![Buld Status](https://travis-ci.org/TMoska/fillit.svg)](https://travis-ci.org/TMoska/fillit.svg?branch=master)
+Fillit - TMoska & mpaju [![Buld Status](https://travis-ci.org/TMoska/fillit.svg)](https://travis-ci.org/TMoska/fillit.svg?branch=master)
 ===
 
 Algorithm project that uses backtracking technique to find a solution to a smallest possible map, given the tetrimino figures.
