@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 19:33:07 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/17 19:34:23 by tmoska           ###   ########.fr       */
+/*   Updated: 2016/12/14 17:26:02 by moska            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *restrict s1, const char *restrict s2)
+char	*ft_strcat(char *s1, const char *s2)
 {
 	char *tmp;
 

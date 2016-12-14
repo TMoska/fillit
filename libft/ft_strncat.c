@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 19:36:09 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/17 19:36:58 by tmoska           ###   ########.fr       */
+/*   Updated: 2016/12/14 17:25:40 by moska            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
 	char	*tmp;
 	size_t	i;

@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmoska <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: moska <moska@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 11:48:00 by tmoska            #+#    #+#             */
-/*   Updated: 2016/11/18 11:55:35 by tmoska           ###   ########.fr       */
+/*   Updated: 2016/12/14 17:26:43 by moska            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	*ft_memccpy(void *restrict dst,
-		const void *restrict src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	if (n != 0)
 	{
