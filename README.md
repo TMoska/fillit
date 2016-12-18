@@ -49,6 +49,14 @@ AA.C
 BB.C
 BB..
 ```
+Studying at 42?
+---
+
+You might be interested in checking my other repositories:
+- [libft](https://www.github.com/TMoska/libft)
+- [sastantua](https://github.com/TMoska/sastantua)
+- [get_next_line](https://github.com/TMoska/get_next_line)
+- [42_exams](https://github.com/TMoska/42_exams)
 
 Contributing
 ---
