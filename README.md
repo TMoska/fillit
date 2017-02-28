@@ -53,11 +53,13 @@ Studying at 42?
 ---
 
 You might be interested in checking my other repositories:
-- [libft](https://www.github.com/TMoska/libft)
 - [sastantua](https://github.com/TMoska/sastantua)
-- [get_next_line](https://github.com/TMoska/get_next_line)
 - [42_exams](https://github.com/TMoska/42_exams)
 - [piscine_reloaded](https://github.com/TMoska/piscine_reloaded)
+- [libft](https://www.github.com/TMoska/libft)
+- [get_next_line](https://github.com/TMoska/get_next_line)
+- [ft_ls](https://github.com/TMoska/ft_ls)
+- [minishell](https://github.com/TMoska/minishell)
 
 Contributing
 ---
